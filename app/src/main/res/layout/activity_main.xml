@@ -47,16 +47,6 @@
                 android:src="@drawable/ic_search"
                 android:contentDescription="Search" />
 
-            <!-- Notifikasi -->
-            <ImageView
-                android:id="@+id/btn_notification"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
-                android:padding="10dp"
-                android:background="@drawable/circle_gray"
-                android:src="@drawable/ic_notifications"
-                android:contentDescription="Notifikasi" />
         </LinearLayout>
 
         <!-- Judul Breaking News -->

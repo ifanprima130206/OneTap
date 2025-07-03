@@ -1,5 +1,6 @@
 package com.example.onetap;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.View;
@@ -49,7 +50,7 @@ public class DetailNewsActivity extends AppCompatActivity {
 
     private void setupClickListeners() {
         btnBack.setOnClickListener(v -> finish());
-        btnBookmark.setOnClickListener(v -> toggleBookmark());
+        btnBookmark.setOnClickListener(v -> shareNews());
     }
 
     private void loadNewsData() {
@@ -104,7 +105,18 @@ public class DetailNewsActivity extends AppCompatActivity {
         return "Media";
     }
 
-    private void toggleBookmark() {
-        // nanti kamu bisa tambahkan fungsi simpan atau toggle status bookmark di sini
+    private void shareNews() {
+        NewsItem news = (NewsItem) getIntent().getSerializableExtra("news");
+        if (news != null) {
+            String shareText = news.getTitle() + "\n\nBaca selengkapnya: " + news.getLink();
+
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, news.getTitle());
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+
+            startActivity(Intent.createChooser(shareIntent, "Bagikan berita via"));
+        }
     }
+
 }
