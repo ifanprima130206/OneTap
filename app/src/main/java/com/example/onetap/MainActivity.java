@@ -272,10 +272,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.nav_home) {
             showToast("Home clicked");
-        } else if (id == R.id.nav_profile) {
-            showToast("Profile clicked");
-        } else if (id == R.id.nav_settings) {
-            showToast("Settings clicked");
+        } else if (id == R.id.nav_earthquake) {
+            showToast("Earthquake clicked");
+        } else if (id == R.id.nav_weather) {
+            showToast("Weather clicked");
         }
         return true;
     }
