@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name"></string>
+    <string name="navigation_drawer_open">Buka Sidebar</string>
+    <string name="navigation_drawer_close">Tutup Sidebar</string>
+</resources>
