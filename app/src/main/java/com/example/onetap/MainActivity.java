@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private int itemsPerPage = 7;
     private int currentPage = 0;
     private boolean isLoadingMore = false;
+    private ImageView btnSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         fetchNewsFromApi();
+
+        btnSearch = findViewById(R.id.btn_search);
+        btnSearch.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     private void fetchNewsFromApi() {
@@ -112,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             combinedNews.addAll(posts);
                         }
                         if (actualResponses == expectedResponses) {
+                            SharedData.setNewsList(combinedNews);
                             showNews(combinedNews);
                         }
                     }
@@ -120,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onFailure(Call<NewsResponse> call, Throwable t) {
                         actualResponses++;
                         if (actualResponses == expectedResponses) {
+                            SharedData.setNewsList(combinedNews);
                             showNews(combinedNews);
                         }
                     }

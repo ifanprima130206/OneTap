@@ -69,16 +69,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/btn_view_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All"
-                android:textColor="@color/blue"
-                android:textSize="14sp"
-                android:padding="6dp"
-                android:background="?attr/selectableItemBackground"
-                android:textStyle="bold" />
+
         </LinearLayout>
 
         <!-- ViewPager2 Carousel -->
@@ -121,14 +112,6 @@
                 android:textStyle="bold"
                 android:textColor="@android:color/black" />
 
-            <TextView
-                android:id="@+id/view_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All"
-                android:textSize="14sp"
-                android:textColor="@color/blue"
-                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- List Berita Terbaru -->
@@ -141,6 +124,12 @@
             android:layout_marginBottom="16dp" />
 
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp" />
 
     <!-- Sidebar / Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView

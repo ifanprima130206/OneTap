@@ -25,6 +25,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailNewsActivity" />
+        <activity android:name=".SearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
     </application>
 
 </manifest>

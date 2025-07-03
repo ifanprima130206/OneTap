@@ -16,13 +16,12 @@ import com.example.onetap.model.NewsItem;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class LatestNewsAdapter extends RecyclerView.Adapter<LatestNewsAdapter.LatestNewsViewHolder> {
+public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.SearchNewsViewHolder> {
 
     private final List<NewsItem> newsList;
     private OnItemClickListener listener;
@@ -35,19 +34,19 @@ public class LatestNewsAdapter extends RecyclerView.Adapter<LatestNewsAdapter.La
         this.listener = listener;
     }
 
-    public LatestNewsAdapter(List<NewsItem> newsList) {
-        this.newsList = new ArrayList<>(newsList);
+    public SearchNewsAdapter(List<NewsItem> newsList) {
+        this.newsList = newsList;
     }
 
     @NonNull
     @Override
-    public LatestNewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_latest_news, parent, false);
-        return new LatestNewsViewHolder(view);
+    public SearchNewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_search_news, parent, false);
+        return new SearchNewsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LatestNewsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SearchNewsViewHolder holder, int position) {
         NewsItem news = newsList.get(position);
         holder.title.setText(news.getTitle());
         holder.category.setText(capitalize(news.getCategory()));
@@ -72,17 +71,24 @@ public class LatestNewsAdapter extends RecyclerView.Adapter<LatestNewsAdapter.La
         return newsList.size();
     }
 
+    // ✅ Method untuk menambah data (lazy loading)
     public void addMoreNews(List<NewsItem> moreNews) {
         int startPosition = newsList.size();
         newsList.addAll(moreNews);
         notifyItemRangeInserted(startPosition, moreNews.size());
     }
 
-    public static class LatestNewsViewHolder extends RecyclerView.ViewHolder {
+    // ✅ Method untuk clear data
+    public void clearNews() {
+        newsList.clear();
+        notifyDataSetChanged();
+    }
+
+    public static class SearchNewsViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
         TextView title, category, author, publishDate;
 
-        public LatestNewsViewHolder(@NonNull View itemView) {
+        public SearchNewsViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.news_image);
             title = itemView.findViewById(R.id.news_title);
