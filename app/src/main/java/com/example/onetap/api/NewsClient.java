@@ -3,7 +3,7 @@ package com.example.onetap.api;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient {
+public class NewsClient {
     private static final String BASE_URL = "https://api-berita-indonesia.vercel.app/";
     private static Retrofit retrofit;
 

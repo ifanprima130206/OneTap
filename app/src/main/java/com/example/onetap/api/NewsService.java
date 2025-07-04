@@ -6,7 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface ApiService {
+public interface NewsService {
 
     // Ambil berita terbaru dari satu sumber (misalnya: cnn/terbaru, tempo/terbaru)
     @GET("{source}/terbaru")

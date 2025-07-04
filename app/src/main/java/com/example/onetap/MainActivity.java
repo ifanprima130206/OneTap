@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,8 +23,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.onetap.adapter.LatestNewsAdapter;
 import com.example.onetap.adapter.NewsAdapter;
-import com.example.onetap.api.ApiClient;
-import com.example.onetap.api.ApiService;
+import com.example.onetap.api.NewsClient;
+import com.example.onetap.api.NewsService;
 import com.example.onetap.model.NewsItem;
 import com.example.onetap.model.NewsResponse;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -93,9 +94,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
     }
-
     private void fetchNewsFromApi() {
-        ApiService apiService = ApiClient.getRetrofit().create(ApiService.class);
+        NewsService newsService = NewsClient.getRetrofit().create(NewsService.class);
         String[] sources = {"antara", "cnbc", "cnn", "jpnn", "kumparan", "merdeka",
 //                "okezone",
                 "republika",
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         for (String source : sources) {
             for (String category : categories) {
-                apiService.getNewsByCategory(source, category).enqueue(new Callback<NewsResponse>() {
+                newsService.getNewsByCategory(source, category).enqueue(new Callback<NewsResponse>() {
                     @Override
                     public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
                         actualResponses++;
@@ -265,21 +265,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        drawerLayout.closeDrawers();
+        drawerLayout.closeDrawers(); // Menutup drawer saat item diklik
         int id = item.getItemId();
+
         if (id == R.id.nav_home) {
             showToast("Home clicked");
         } else if (id == R.id.nav_earthquake) {
-            showToast("Earthquake clicked");
+            Intent intent = new Intent(MainActivity.this, EarthquakeActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_weather) {
-            showToast("Weather clicked");
+            showToast("Weather belum tersedia");
         }
+
         return true;
     }
-
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
