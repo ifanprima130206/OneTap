@@ -9,8 +9,8 @@
         android:id="@+id/nav_earthquake"
         android:icon="@drawable/ic_earthquake"
         android:title="Earthquake" />
-    <item
-        android:id="@+id/nav_weather"
-        android:icon="@drawable/ic_cloud"
-        android:title="Weather" />
+<!--    <item-->
+<!--        android:id="@+id/nav_weather"-->
+<!--        android:icon="@drawable/ic_cloud"-->
+<!--        android:title="Weather" />-->
 </menu>

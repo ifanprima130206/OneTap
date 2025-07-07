@@ -275,9 +275,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_earthquake) {
             Intent intent = new Intent(MainActivity.this, EarthquakeActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_weather) {
-            showToast("Weather belum tersedia");
         }
+//        else if (id == R.id.nav_weather) {
+//            showToast("Weather belum tersedia");
+//        }
 
         return true;
     }

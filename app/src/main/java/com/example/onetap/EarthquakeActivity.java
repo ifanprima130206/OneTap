@@ -160,11 +160,12 @@ public class EarthquakeActivity extends AppCompatActivity implements NavigationV
             showToast("Anda sudah di halaman Earthquake");
             return true;
 
-        } else if (id == R.id.nav_weather) {
-            Log.d("EarthquakeActivity", "Weather clicked");
-            showToast("Weather belum tersedia");
-            return true;
         }
+//        else if (id == R.id.nav_weather) {
+//            Log.d("EarthquakeActivity", "Weather clicked");
+//            showToast("Weather belum tersedia");
+//            return true;
+//        }
 
         return false;
     }
